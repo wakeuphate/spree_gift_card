@@ -1,6 +1,6 @@
 Spree::OrdersController.class_eval do
 
-  def update_with_gift_code
+  def update
     @order = current_order
     @order.update_attributes(params[:order])
 
@@ -15,10 +15,10 @@ Spree::OrdersController.class_eval do
       end
     end
 
-    update
+    update_order
   end
 
-  def update
+  def update_order
       @order = current_order
       unless @order
         flash[:error] = t(:order_not_found)
