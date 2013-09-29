@@ -11,7 +11,7 @@ Spree::OrdersController.class_eval do
       else
         params[:order][:gift_code] = nil
         @order.gift_code = nil
-        render :edit and return
+        redirect_to :back and return
       end
     end
 
