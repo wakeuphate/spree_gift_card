@@ -1,4 +1,4 @@
-<!-- insert_bottom '#order-summary' -->
+<!-- insert_top '#cart-buttons' -->
 
 <tbody class="gift-code-field">
   <tr>
