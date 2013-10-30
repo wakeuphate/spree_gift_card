@@ -4,6 +4,10 @@ Spree::OrderMailer.class_eval do
     @order = order
     subject = "#{Spree::Config[:site_name]} Gift Card"
     @gift_card.update_attribute(:sent_at, Time.now)
-    mail(:to => card.email, :subject => subject)
+    mail(
+      :from => Spree::Config.preferred_emails_sent_from,
+      :to => card.email, 
+      :subject => subject
+    )
   end
 end
