@@ -3,6 +3,8 @@ require 'spree/core/validators/email'
 module Spree
   class GiftCard < ActiveRecord::Base
 
+    require 'base32/crockford'
+
     UNACTIVATABLE_ORDER_STATES = ["complete", "awaiting_return", "returned"]
 
     attr_accessible :email, :name, :note, :variant_id
@@ -61,7 +63,7 @@ module Spree
 
     def generate_code
       until self.code.present? && self.class.where(code: self.code).count == 0
-        self.code = Base32::Crockford.encode([Time.now, rand].join)
+        self.code = Base32::Crockford.encode([Time.now.to_i, rand(1...50000)].join.to_i)
       end
     end
 
