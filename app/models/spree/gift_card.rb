@@ -63,7 +63,7 @@ module Spree
 
     def generate_code
       until self.code.present? && self.class.where(code: self.code).count == 0
-        self.code = Base32::Crockford.encode([Time.now.to_i, rand(1...50000)].join.to_i)
+        self.code = Base32::Crockford.encode(rand(1...5000000000))
       end
     end
 
