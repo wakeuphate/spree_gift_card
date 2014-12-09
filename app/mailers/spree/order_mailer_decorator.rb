@@ -6,7 +6,7 @@ Spree::OrderMailer.class_eval do
     @gift_card.update_attribute(:sent_at, Time.now)
     mail(
       :from => Spree::Config.preferred_emails_sent_from,
-      :to => card.email, 
+      :to => 'joshua@theartfulproject.com',
       :subject => subject
     )
   end
