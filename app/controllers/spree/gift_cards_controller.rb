@@ -8,8 +8,8 @@ module Spree
     end
 
     def create
+      render :action => :index && return unless params[:quick_check].nil?
       begin
-        # Wrap the transaction script in a transaction so it is an atomic operation
         Spree::GiftCard.transaction do
           @gift_card = GiftCard.new(params[:gift_card])
           @gift_card.save!
