@@ -8,7 +8,10 @@ module Spree
     end
 
     def create
-      redirect_to gift_cards_path && return unless params[:quick_check].empty?
+      redirect_to gift_cards_path unless params[:quick_check].empty?
+
+      binding.pry
+
       begin
         Spree::GiftCard.transaction do
           @gift_card = GiftCard.new(params[:gift_card])
