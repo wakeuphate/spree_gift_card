@@ -8,6 +8,7 @@ module Spree
     end
 
     def create
+      binding.pry
       render :action => :index && return unless params[:quick_check].nil?
       begin
         Spree::GiftCard.transaction do
